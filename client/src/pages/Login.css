@@ -1,0 +1,74 @@
+
+.form-box
+{
+    width: 400px;
+    height: 350px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(240, 236, 236, 0.6);
+}
+.close 
+{
+    position: relative;
+    left: 270px;
+    bottom: 0;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+.close:hover,.close:focus 
+{
+    color: rgb(0, 153, 255);
+    cursor: pointer;
+}
+.main-heading
+{
+    color: rgb(6, 7, 10);
+    padding-bottom: 20px;
+}
+.form
+{
+    position: relative;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    bottom: 20px;
+}
+.form input, .form1 input
+{
+    font-family: sans-serif;
+    outline: none;
+    border: none;
+    
+    width: 100%;
+    margin: 0 0 15px;
+    padding: 15px;
+    font-size: 14px;
+}
+.form button, .form1 button
+{
+    font-family: sans-serif;
+    width: 100%;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 15px;
+    border: none;
+    top: 200px;
+    background: rgb(80, 170, 255);
+    bottom: 200px;
+}
+.form .asking
+{
+    font-size: 12px;
+    margin: 15px 0 0;
+    color: white;
+}
+.form .asking a
+{
+    color: orangered;
+    text-decoration: none;
+}

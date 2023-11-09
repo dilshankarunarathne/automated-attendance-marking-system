@@ -26,7 +26,7 @@ export default function Sidebar() {
               </li>
               <li className="sidebarListItem" onClick={"/student"}>
                   <a><NoteAltIcon className='sidebarIcon'/></a>
-                  <a className="sidebarListItemText" href=''>
+                  <a className="sidebarListItemText" href='/attendance'>
                     Attendence
                   </a>
               </li>

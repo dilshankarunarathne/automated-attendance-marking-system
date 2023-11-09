@@ -19,7 +19,7 @@ export default function Results() {
   }
 
   return (
-    <div></div>
+    <div>
     <div className="results">
       <form onSubmit={searchByIndex}>
         <label>Index:</label>

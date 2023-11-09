@@ -20,7 +20,18 @@ export default function Attendance() {
   function sendData(e){
     e.preventDefault();
     
+    const attendanceData = {
+        date,
+        status,
+        userId: user._id
+      };
     
+      try {
+        const response = await axios.post('http://localhost:8070/attendance', attendanceData);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
   }
 
   return (

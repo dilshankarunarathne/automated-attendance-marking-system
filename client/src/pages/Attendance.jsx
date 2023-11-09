@@ -40,17 +40,33 @@ export default function Attendance() {
     <div>
       <Topbar/>
       <div className="attendance">
-        <form onSubmit={sendData}>
-          <label>Date:</label>
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-          <label>Status:</label>
-          <select value={status} onChange={(e) => setStatus(e.target.value)}>
-            <option value="Present">Present</option>
-            <option value="Absent">Absent</option>
-          </select>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+      <form onSubmit={searchByIndex}>
+        <label>Index:</label>
+        <input type="text" value={index} onChange={(e) => setIndex(e.target.value)} />
+        <button type="submit">Search by Index</button>
+      </form>
+      <form onSubmit={searchByDate}>
+        <label>Date:</label>
+        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+        <button type="submit">Search by Date</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {attendanceData.map((data) => (
+            <tr key={data._id}>
+              <td>{data.index}</td>
+              <td>{data.date}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
     </div>
   );
 }

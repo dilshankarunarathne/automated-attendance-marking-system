@@ -9,7 +9,7 @@ import { AuthContext } from './context/AuthContext';
 import { useContext } from 'react';
 import Dashboard from './pages/Dashboard';
 import Attendance from './pages/Attendance';
-
+import Results from './pages/Results';
 
 
 function App() {

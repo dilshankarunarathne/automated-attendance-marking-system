@@ -8,6 +8,7 @@ import { Register } from './pages/Register';
 import { AuthContext } from './context/AuthContext';
 import { useContext } from 'react';
 import Dashboard from './pages/Dashboard';
+import Attendance from
 
 
 function App() {

@@ -32,7 +32,7 @@ router.post('/mark/:fingerprint_data', async (req, res) => {
   // This part is not included in the code because it depends on how you're handling fingerprint data
 
   const newAttendance = new Attendance({
-    index:,
+    index: /* student index number */,
     date: new Date(),
     timestamp: Date.now()
   });
@@ -44,5 +44,6 @@ router.post('/mark/:fingerprint_data', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
 
 module.exports = router;

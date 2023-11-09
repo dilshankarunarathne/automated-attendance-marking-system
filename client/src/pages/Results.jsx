@@ -20,6 +20,7 @@ export default function Results() {
 
   return (
     <div>
+        <Topbar/>
         <div className="results">
         <form onSubmit={searchByIndex}>
             <label>Index:</label>

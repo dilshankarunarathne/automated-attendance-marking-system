@@ -19,7 +19,8 @@ export default function Attendance() {
   
   function sendData(e){
     e.preventDefault();
-    // Send attendance data to server
+    
+    
   }
 
   return (

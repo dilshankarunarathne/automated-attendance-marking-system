@@ -35,7 +35,7 @@ export default function Attendance() {
   }
 
   return (
-    <div></div>
+    <div>
     <div className="attendance">
       <form onSubmit={sendData}>
         <label>Date:</label>
@@ -47,6 +47,7 @@ export default function Attendance() {
         </select>
         <button type="submit">Submit</button>
       </form>
+    </div>
     </div>
   );
 }

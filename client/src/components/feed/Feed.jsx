@@ -39,8 +39,6 @@ export default function Feed() {
         }).catch((err)=>{
             alert(err)
         })
-
-
     }
 
   return (

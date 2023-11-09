@@ -6,11 +6,13 @@
     height: calc(100vh - 60px);
     margin-top: 60px; 
     background-color: #f0f0f0;
-  }
+}
 
 .results form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
     padding: 20px;
     border: 1px solid #ddd;

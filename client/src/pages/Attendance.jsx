@@ -37,18 +37,18 @@ export default function Attendance() {
   return (
     <div>
       <Topbar/>
-    <div className="attendance">
-      <form onSubmit={sendData}>
-        <label>Date:</label>
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-        <label>Status:</label>
-        <select value={status} onChange={(e) => setStatus(e.target.value)}>
-          <option value="Present">Present</option>
-          <option value="Absent">Absent</option>
-        </select>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+      <div className="attendance">
+        <form onSubmit={sendData}>
+          <label>Date:</label>
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+          <label>Status:</label>
+          <select value={status} onChange={(e) => setStatus(e.target.value)}>
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+          </select>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
   );
 }

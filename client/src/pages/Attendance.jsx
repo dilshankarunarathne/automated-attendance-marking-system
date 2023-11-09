@@ -17,7 +17,7 @@ export default function Attendance() {
   const [date, setDate] = useState("");
   const [status, setStatus] = useState("");
   
-  function sendData(e){
+  async function sendData(e){
     e.preventDefault();
     
     const attendanceData = {

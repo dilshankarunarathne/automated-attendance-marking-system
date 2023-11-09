@@ -1,0 +1,32 @@
+
+
+.form-box1
+{
+    width: 450px;
+    height: 500px;
+   
+    background: rgba(240, 236, 236, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.main-heading
+{
+    color: rgb(8, 8, 8);
+    padding-bottom: 20px;
+}
+.form1
+{
+    position: relative;
+    margin: 0 auto 100px;
+    padding: 25px;
+    text-align: center;
+    bottom: 20px;
+}
+.btn{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+

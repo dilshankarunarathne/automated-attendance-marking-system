@@ -25,6 +25,7 @@ router.put("/:id", async (req, res) => {
     return res.status(403).json("You can update only your account");
   }
 });
+
 //delete user
 router.delete("/:id", async (req, res) => {
   if (req.body.userId == req.params.id || req.body.isAdmin) {

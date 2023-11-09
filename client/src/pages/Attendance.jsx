@@ -36,6 +36,7 @@ export default function Attendance() {
 
   return (
     <div>
+      <Topbar/>
     <div className="attendance">
       <form onSubmit={sendData}>
         <label>Date:</label>

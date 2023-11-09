@@ -19,9 +19,9 @@
 .attendance form input,
 .attendance form select,
 .attendance form button {
-padding: 10px;
-border: 1px solid #ddd;
-border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .attendance form button {

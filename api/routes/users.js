@@ -65,7 +65,6 @@ router.route("/:id").put(async(req, res) => {
       lastname,
       phone,
       email,
-      
   }
 
   const update = await User.findByIdAndUpdate(userId, updateStudent)

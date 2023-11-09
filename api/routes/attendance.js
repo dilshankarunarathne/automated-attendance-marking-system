@@ -25,6 +25,7 @@ router.get('/index/:index', async (req, res) => {
   }
 });
 
+/*
 router.post('/mark/:fingerprint_data', async (req, res) => {
   const { fingerprint_data } = req.params;
 
@@ -44,6 +45,6 @@ router.post('/mark/:fingerprint_data', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
+*/
 
 module.exports = router;

@@ -39,6 +39,7 @@ router.delete("/:id", async (req, res) => {
     return res.status(403).json("You can delete only your account");
   }
 });
+
 //get user
 router.get("/", async (req, res) => {
   const userId = req.query.userId;

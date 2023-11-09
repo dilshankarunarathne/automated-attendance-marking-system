@@ -2,6 +2,8 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 
+import Topbar from '../components/topbar/Topbar';
+
 export default function Results() {
   const { user } = useContext(AuthContext);
   const [index, setIndex] = useState("");

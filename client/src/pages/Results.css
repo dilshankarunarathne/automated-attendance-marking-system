@@ -1,0 +1,42 @@
+.results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  .results form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  .results form input,
+  .results form button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .results form button {
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .results table {
+    border-collapse: collapse;
+  }
+  
+  .results table th,
+  .results table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }

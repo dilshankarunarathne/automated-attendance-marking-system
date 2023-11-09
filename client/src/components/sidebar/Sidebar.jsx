@@ -32,7 +32,7 @@ export default function Sidebar() {
               </li>
               <li className="sidebarListItem">
                   <PaymentIcon className='sidebarIcon'/>
-                  <a className="sidebarListItemText" href=''>
+                  <a className="sidebarListItemText" href='/results'>
                     Results
                   </a>
               </li>

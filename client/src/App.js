@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard';
 import Attendance from './pages/Attendance';
 
 
+
 function App() {
   const {user}=useContext(AuthContext)
   return (

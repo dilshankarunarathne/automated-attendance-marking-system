@@ -24,12 +24,12 @@ export default function Results() {
     <div>
         <Topbar/>
         <div className="results">
-        <form onSubmit={searchByIndex}>
-            <label>Index:</label>
-            <input type="text" value={index} onChange={(e) => setIndex(e.target.value)} />
-            <button type="submit">Search by Index</button>
+        <form onSubmit={searchByIndex} className="results-form">
+        <label>Index:</label>
+        <input type="text" value={index} onChange={(e) => setIndex(e.target.value)} />
+        <button type="submit">Search by Index</button>
         </form>
-        <table>
+        <table className="results-table">
             <thead>
             <tr>
                 <th>Index</th>

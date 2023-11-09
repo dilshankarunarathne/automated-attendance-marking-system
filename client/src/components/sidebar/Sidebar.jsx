@@ -33,7 +33,7 @@ export default function Sidebar() {
               <li className="sidebarListItem">
                   <PaymentIcon className='sidebarIcon'/>
                   <a className="sidebarListItemText" href=''>
-                    Payments
+                    Results
                   </a>
               </li>
               <br></br>

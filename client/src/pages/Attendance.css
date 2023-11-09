@@ -7,13 +7,13 @@
 }
 
 .attendance form {
-display: flex;
-flex-direction: column;
-gap: 20px;
-padding: 20px;
-border: 1px solid #ddd;
-border-radius: 5px;
-background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
 }
 
 .attendance form input,

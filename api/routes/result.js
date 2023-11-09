@@ -1,5 +1,5 @@
 const express = require('express');
-const Results = require('../models/Results'); // Replace with your actual Results model path
+const Results = require('../models/Results'); 
 
 const router = express.Router();
 

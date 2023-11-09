@@ -19,6 +19,7 @@ function App() {
        <Route exact path='/' element={user?<Dashboard />:<Login/>}/>
        <Route path='Signup' element={user?<Dashboard />:<Register/>}/>
        <Route path='dashboard' element={<Dashboard/>}/>
+       <Route path='/attendance' element={<Attendance />} />
     </Routes>
   </BrowserRouter>
 

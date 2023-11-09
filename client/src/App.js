@@ -22,6 +22,7 @@ function App() {
        <Route path='Signup' element={user?<Dashboard />:<Register/>}/>
        <Route path='dashboard' element={<Dashboard/>}/>
        <Route path='/attendance' element={<Attendance />} />
+       
     </Routes>
   </BrowserRouter>
 

@@ -54,9 +54,6 @@ export const Register = () => {
       };
     }
 
-    
-
-
   const paperStyle = {
     padding : 20,
     height: 'auto',

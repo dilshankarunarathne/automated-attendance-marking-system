@@ -8,32 +8,31 @@ import axios from 'axios';
 import Topbar from '../components/topbar/Topbar';
 
 export default function Attendance() {
-
   const { user } = useContext(AuthContext);
-  const logout = () => {
-    localStorage.clear();
-    navigate("/login");
-  };
-
-  const navigate = useNavigate();
+  const [index, setIndex] = useState("");
   const [date, setDate] = useState("");
-  const [status, setStatus] = useState("");
-  
-  async function sendData(e){
+  const [attendanceData, setAttendanceData] = useState([]);
+
+  async function searchByIndex(e) {
     e.preventDefault();
-    
-    const attendanceData = {
-        date,
-        status,
-        userId: user._id
-      };
-    
-      try {
-        const response = await axios.post('http://localhost:8070/attendance', attendanceData);
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-      }
+
+    try {
+      const response = await axios.get(`http://localhost:8070/attendance/index/${index}`);
+      setAttendanceData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function searchByDate(e) {
+    e.preventDefault();
+
+    try {
+      const response = await axios.get(`http://localhost:8070/attendance/date/${date}`);
+      setAttendanceData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (

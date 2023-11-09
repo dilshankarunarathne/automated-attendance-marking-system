@@ -14,7 +14,7 @@ export default function Sidebar() {
           <hr className='sidebarHr'/>
               <li className="sidebarListItem" >
                   <HomeIcon className='sidebarIcon'/>
-                  <a href=""><span  className="sidebarListItemText" >
+                  <a href="/"><span  className="sidebarListItemText" >
                     Home
                   </span></a>
               </li>

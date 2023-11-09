@@ -11,7 +11,7 @@ export default function Results() {
     e.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8070/results/index/${index}`);
+      const response = await axios.get(`http://localhost:8070/results/${index}`);
       setResultsData(response.data);
     } catch (error) {
       console.error(error);

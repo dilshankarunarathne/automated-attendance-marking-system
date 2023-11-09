@@ -49,5 +49,6 @@ export default function Results() {
         </tbody>
       </table>
     </div>
+    </div>
   );
 }

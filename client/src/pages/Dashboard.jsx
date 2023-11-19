@@ -53,7 +53,7 @@ import Feed from '../components/feed/Feed';
 import Sidebar from '../components/sidebar/Sidebar';
 import Topbar from '../components/topbar/Topbar'
 import { AuthContext } from "../context/AuthContext";
- import "./Dashboard.css";
+import "./Dashboard.css";
 
 export default function Dashboard() {
 

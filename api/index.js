@@ -3,12 +3,13 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
-const authRouter=require('./routes/auth');
 const cors=require('cors');
 
 const attendanceRouter=require('./routes/attendance');
 const resultsRouter=require('./routes/result');
+const authRouter=require('./routes/auth');
 const studentsRouter=require('./routes/students');
+const userRouter=require('./routes/users');
 
 //upload image
 const multer = require("multer");
@@ -49,6 +50,7 @@ app.use("/api/auth",authRouter);
 app.use("/attendance", attendanceRouter);
 app.use("/results", resultsRouter);
 app.use("/students", studentsRouter);
+app.use("/users", userRouter);
 
 app.listen(8800, () => {
   console.log("Backend server is running");

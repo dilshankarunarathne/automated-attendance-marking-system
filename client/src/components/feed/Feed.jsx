@@ -21,6 +21,7 @@ export default function Feed() {
   const navigate = useNavigate();
     const [firstname, setFirstName] = useState(user.firstname);
     const [lastname, setLastName] = useState(user.lastname);
+    const [index, setIndex] = useState(user.index);
     const [phone, setPhone] = useState(user.phone);
     const [email, setEmail] = useState(user.email);
     const [gender, setGender] = useState("");
@@ -33,6 +34,7 @@ export default function Feed() {
         const upStudent = {
             user,
             firstname,
+            index,
             lastname,
             phone,
             email,
@@ -56,6 +58,7 @@ export default function Feed() {
             const userData = response.data;
             setFirstName(userData.firstname);
             setLastName(userData.lastname);
+            setIndex(userData.index)
             setPhone(userData.phone);
             setEmail(userData.email);
             setGender(userData.gender);
@@ -94,6 +97,13 @@ export default function Feed() {
                             <input type="text" class="form-control" value={lastname} placeholder="last name"
                                     onChange={(e)=>{
                                         setLastName(e.target.value);
+                                    }}
+                            /></div>
+
+                            <div class="col-md-6"><label class="labels">Index Number</label>
+                            <input type="text" class="form-control" value={index} placeholder="index number"
+                                    onChange={(e)=>{
+                                        setIndex(e.target.value);
                                     }}
                             /></div>
                         </div>

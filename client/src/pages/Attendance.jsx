@@ -39,7 +39,7 @@ export default function Attendance() {
   }
 
   return (
-    <div className='root'>
+    <div className='rootContainer'>
       <Topbar/>
       <Sidebar />
       <div className="attendance">

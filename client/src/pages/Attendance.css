@@ -5,12 +5,13 @@
     align-items: center;
     height: 100vh;
     /* background-color: #f0f0f0; */
+    /* get to page top */
+    margin-top: -780px;
 }
 
 .root {
     display: flex;
     flex-direction: row;
-    position: absolute;
 }
 
 .attendance form {

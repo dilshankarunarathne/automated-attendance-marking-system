@@ -32,21 +32,7 @@ export const Register = () => {
         email: email.current.value,
         password: password.current.value,
       };
-      //console.log(user);
-      // if (file) {
-      //   const data = new FormData();
-      //   const fileName = Date.now() + file.name;
-      //   data.append("name", fileName);
-      //   data.append("file", file);
-  
-      //   user.image = fileName;
-      //   console.log(user.image);
-      //   try {
-      //     await axios.post("http://localhost:8800/api/upload", data);
-      //   } catch (error) {
-      //     console.log(error);
-      //   }
-      // }
+      
       try {
         await axios.post("http://localhost:8800/api/auth/register", user);
         navigate("/");
@@ -68,9 +54,7 @@ export const Register = () => {
 
 
   return (
-   
     <div>
-           
             <Grid>
                 <Paper  style={paperStyle}>
                     <Grid align='center'>

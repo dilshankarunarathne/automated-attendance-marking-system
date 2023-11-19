@@ -1,6 +1,11 @@
 .feed{
-    /* flex: 5.5; */
+    display: flex;
 }
+
+.container {
+    margin: 0 auto !important;
+}
+
 body {
     background: rgb(99, 39, 120)
 }

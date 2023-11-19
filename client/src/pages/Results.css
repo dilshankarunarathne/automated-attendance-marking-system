@@ -1,17 +1,14 @@
 .results {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: calc(100vh - 60px);
     padding-left: 20px;
-    /* z-index: 1; */
-    /* background-color: #f0f0f0; */
+    width: 100%;
 }
 
 .root {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .results form {

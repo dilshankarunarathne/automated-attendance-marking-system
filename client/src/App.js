@@ -10,6 +10,7 @@ import { useContext } from 'react';
 import Dashboard from './pages/Dashboard';
 import Attendance from './pages/Attendance';
 import Results from './pages/Results';
+import AdminPage from './pages/Admin';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
        <Route path='dashboard' element={<Dashboard/>}/>
        <Route path='/attendance' element={<Attendance />} />
        <Route path='/results' element={<Results />} />
+       <Route path='/admin' element={<AdminPage />} />
     </Routes>
   </BrowserRouter>
 

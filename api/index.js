@@ -8,6 +8,7 @@ const cors=require('cors');
 
 const attendanceRouter=require('./routes/attendance');
 const resultsRouter=require('./routes/result');
+const studentsRouter=require('./routes/students');
 
 //upload image
 const multer = require("multer");
@@ -47,6 +48,7 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use("/api/auth",authRouter);
 app.use("/attendance", attendanceRouter);
 app.use("/results", resultsRouter);
+app.use("/students", studentsRouter);
 
 app.listen(8800, () => {
   console.log("Backend server is running");

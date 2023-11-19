@@ -9,6 +9,10 @@ const StudentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    dob: {
+        type: Date,
+        required: false
+    },
 });
 
 module.exports = mongoose.model('Student', StudentSchema);

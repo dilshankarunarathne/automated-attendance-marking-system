@@ -32,3 +32,5 @@ function sendEmail(to, subject, html, attachments = []) {
 }
 
 // sendEmail('user.ftp.server@gmail.com', 'You have attended', '<b>You have attended to class...</b>')
+
+module.exports = sendEmail;

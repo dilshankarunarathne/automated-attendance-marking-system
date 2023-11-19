@@ -3,6 +3,8 @@ const Attendance = require('../models/Attendance');
 
 const router = express.Router();
 
+const sendEmail = require('../mailer');
+
 router.get('/date/:date', async (req, res) => {
   const { date } = req.params;
 
@@ -43,6 +45,14 @@ router.get('/all', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
+
+router.post('/testMark', async (req, res) => {
+  const { email } = req.params;
+  console.log(`Sending attended notification to: ${email}`);
+  sendEmail(email, 'You have attended', '<b>You have attended to class...</b>');
+});
+
 
 /*
 router.post('/mark/:fingerprint_data', async (req, res) => {

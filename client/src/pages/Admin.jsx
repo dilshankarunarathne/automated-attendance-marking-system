@@ -64,7 +64,7 @@ export default function AdminPage() {
     <div>
         <Topbar/>
         <div className="homeContainer">
-            {/* <Sidebar/> */}
+            <Sidebar/>
             
             <div className='studentList'>
                 <table>

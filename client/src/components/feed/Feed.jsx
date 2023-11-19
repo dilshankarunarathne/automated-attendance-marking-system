@@ -97,6 +97,7 @@ export default function Feed() {
                                     }}
                             /></div>
                         </div>
+                        
                         <div class="row mt-3">
                             <div class="col-md-12"><label class="labels">Mobile Number</label>
                             <input type="text" class="form-control" placeholder="enter phone number" value={phone}

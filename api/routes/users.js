@@ -30,14 +30,11 @@ router.put("/:id", async (req, res) => {
           gender: req.body.gender,
           dateOfBirth: req.body.dateOfBirth,
           age: req.body.age,
-          height: req.body.height,
-          weight: req.body.weight,
-          bmi: req.body.bmi
         }
       }, {new: true});
       res.status(200).json(user);
     } catch (err) {
-      console.log(err); // Log the error message
+      console.log(err); 
       res.status(500).json(err);
     }
   }

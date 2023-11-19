@@ -15,30 +15,20 @@ let config = {
 
 let transporter = nodemailer.createTransport(config);
 
-app.use(express.json()); 
-
-app.post('/sendmail', (req, res) => {
+function sendEmail(to, subject, html, attachments = []) {
     let message = {
         from: 'maleeshasparrow@gmail.com', 
-        to: 'user.ftp.server@gmail.com', 
-        subject: 'You have attended..!', 
-        html: "You have attended to the class.", 
-        attachments: [ ]
+        to: to, 
+        subject: subject, 
+        html: html, 
+        attachments: attachments
     };
 
     transporter.sendMail(message).then((info) => {
-        return res.status(201).json(
-            {
-                msg: "Email sent",
-                info: info.messageId,
-                preview: nodemailer.getTestMessageUrl(info)
-            }
-        )
+        console.log("Email sent", info.messageId, nodemailer.getTestMessageUrl(info));
     }).catch((err) => {
-        return res.status(500).json({ msg: err });
+        console.error(err);
     });
-});
+}
 
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-});
+// sendEmail('user.ftp.server@gmail.com', 'You have attended', '<b>You have attended to class...</b>')

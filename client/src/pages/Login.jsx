@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { loginCall } from "../apiCalls";
 import "./Login.css";
 import { Avatar, Grid, Paper, TextField, Checkbox, FormControlLabel, Button, Typography, Link } from '@mui/material';
@@ -11,6 +11,16 @@ export const Login = () => {
   const email = useRef();
   const password = useRef();
   const { user, isFetching, error, dispatch } = useContext(AuthContext);
+
+  const [roleSelected, setRoleSelected] = useState(false);
+
+  const handleRoleSelection = () => {
+    setRoleSelected(true);
+  };
+
+  const handleGoBack = () => {
+    setRoleSelected(false);
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -40,7 +50,7 @@ export const Login = () => {
   const paperStyle = {
     padding : 20,
     height: 'auto',
-    width: 340,
+    width: '60%',
     margin: "20px auto",
   }
   const avatarstyle ={ backgroundColor: '#1fbb60', margin: '20px'}
@@ -51,7 +61,14 @@ export const Login = () => {
 
   return (
     <div>
+      {!roleSelected ? (
+        <div className="studortech">
+          <button onClick={handleRoleSelection}>Student</button>
+          <button onClick={handleRoleSelection}>Teacher</button>
+        </div>
+      ) : (
             <Grid>
+              <button onClick={handleGoBack}>Go Back</button>
                 <Paper  style={paperStyle}>
                     <Grid align='center'>
                         <Avatar style={avatarstyle}><LockIcon></LockIcon></Avatar>
@@ -89,6 +106,7 @@ export const Login = () => {
                     
                 </Paper>
             </Grid>
-        </div>
+        )}
+      </div>
   );
 };

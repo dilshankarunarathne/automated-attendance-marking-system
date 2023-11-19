@@ -1,8 +1,12 @@
 .feed{
-    flex: 5.5;
+    /* flex: 5.5; */
 }
 body {
     background: rgb(99, 39, 120)
+}
+
+.settings {
+    width: 100%;
 }
 
 .form-control:focus {

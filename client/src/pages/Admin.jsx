@@ -51,49 +51,50 @@ export default function AdminPage() {
                             <td>{student.name}</td>
                             <td>{student.index}</td>
                             <td>
-                                <button onClick={() => setSelectedStudent(student.index)}>Add Results</button>
-                                {selectedStudent === student.index && (
-                                    <div>
-                                        <form>
-                                            <label>
-                                                Maths: <input type="number" name="maths" />
-                                            </label>
-                                            <label>
-                                                Sinhala: <input type="number" name="sinhala" />
-                                            </label>
-                                            <label>
-                                                Science: <input type="number" name="science" />
-                                            </label>
-                                            <label>
-                                                History: <input type="number" name="history" />
-                                            </label>
-                                            <label>
-                                                Religion: <input type="number" name="religion" />
-                                            </label>
-                                            <label>
-                                                English: <input type="number" name="english" />
-                                            </label>
-                                            <label>
-                                                Cat1: <input type="number" name="cat1" />
-                                            </label>
-                                            <label>
-                                                Cat2: <input type="number" name="cat2" />
-                                            </label>
-                                            <label>
-                                                Cat3: <input type="number" name="cat3" />
-                                            </label>
-                                            <button type="submit">Submit</button>
-                                        </form>
-                                    </div>
-                                )}
+                                <button onClick={() => setSelectedStudent(student)}>Add Results</button>
                             </td>
                         </tr>
                     ))}
                     </tbody>
                 </table>
             </div>
-
+            <div className='resultForm'>
+                {selectedStudent && (
+                    <div>
+                        <form>
+                            <label>
+                                Maths: <input type="number" name="maths" />
+                            </label>
+                            <label>
+                                Sinhala: <input type="number" name="sinhala" />
+                            </label>
+                            <label>
+                                Science: <input type="number" name="science" />
+                            </label>
+                            <label>
+                                History: <input type="number" name="history" />
+                            </label>
+                            <label>
+                                Religion: <input type="number" name="religion" />
+                            </label>
+                            <label>
+                                English: <input type="number" name="english" />
+                            </label>
+                            <label>
+                                Cat1: <input type="number" name="cat1" />
+                            </label>
+                            <label>
+                                Cat2: <input type="number" name="cat2" />
+                            </label>
+                            <label>
+                                Cat3: <input type="number" name="cat3" />
+                            </label>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                )}
+            </div>
         </div>
     </div>
-  )
+    )
 }

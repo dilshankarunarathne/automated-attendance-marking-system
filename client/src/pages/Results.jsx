@@ -1,8 +1,9 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
-
+import "./Results.css";
 import Topbar from '../components/topbar/Topbar';
+
 
 export default function Results() {
   const { user } = useContext(AuthContext);
@@ -13,7 +14,7 @@ export default function Results() {
     e.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8070/results/${index}`);
+      const response = await axios.get(`http://localhost:8800/results/${index}`);
       setResultsData(response.data);
     } catch (error) {
       console.error(error);
@@ -46,7 +47,7 @@ export default function Results() {
                 <td>{data.grade}</td>
                 <td>{data.semester}</td>
                 <td>{data.subject}</td>
-                <td>{data.mark}</td>
+                <td>{data.marks}</td>
                 </tr>
             ))}
             </tbody>

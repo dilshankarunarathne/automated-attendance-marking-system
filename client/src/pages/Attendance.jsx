@@ -17,7 +17,8 @@ export default function Attendance() {
     e.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8070/attendance/index/${index}`);
+      const response = await axios.get(`http://localhost:8800/attendance/index/${index}`);
+      console.log(response.data);
       setAttendanceData(response.data);
     } catch (error) {
       console.error(error);
@@ -28,7 +29,8 @@ export default function Attendance() {
     e.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8070/attendance/date/${date}`);
+      const response = await axios.get(`http://localhost:8800/attendance/date/${date}`);
+      console.log(response.data);
       setAttendanceData(response.data);
     } catch (error) {
       console.error(error);
@@ -57,12 +59,17 @@ export default function Attendance() {
           </tr>
         </thead>
         <tbody>
-          {attendanceData.map((data) => (
+        {attendanceData.map((data) => {
+          const date = new Date(data.date);
+          const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+
+          return (
             <tr key={data._id}>
               <td>{data.index}</td>
-              <td>{data.date}</td>
+              <td>{formattedDate}</td>
             </tr>
-          ))}
+          );
+        })}
         </tbody>
       </table>
     </div>

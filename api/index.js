@@ -6,6 +6,8 @@ const morgan = require("morgan");
 const authRouter=require('./routes/auth');
 const cors=require('cors');
 
+const attendanceRouter=require('./routes/attendance');
+const resultsRouter=require('./routes/result');
 
 //upload image
 const multer = require("multer");
@@ -43,17 +45,8 @@ app.use(morgan("common"));
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 app.use("/api/auth",authRouter);
-
-
-// app.get("/", (req, res) => {
-//   res.send("Welcome to home page");
-// });
-
-// app.get("/users", (req, res) => {
-//   res.send("Welcome to user page");
-// });
-
-
+app.use("/attendance", attendanceRouter);
+app.use("/results", resultsRouter);
 
 app.listen(8800, () => {
   console.log("Backend server is running");

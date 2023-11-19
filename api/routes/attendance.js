@@ -8,6 +8,9 @@ router.get('/date/:date', async (req, res) => {
 
   try {
     const attendance = await Attendance.find({ date });
+    if (!attendance || attendance.length === 0) {
+      return res.status(404).json({ message: 'No attendance record found for this date' });
+    }
     res.json(attendance);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -16,11 +19,27 @@ router.get('/date/:date', async (req, res) => {
 
 router.get('/index/:index', async (req, res) => {
   const { index } = req.params;
-
+  console.log(`Index received: ${index}`);
   try {
-    const attendance = await Attendance.find({ index });
+    const attendance = await Attendance.find({ index: index });
+    console.log(`Attendance records found: ${JSON.stringify(attendance)}`);
+    if (!attendance) {
+      return res.status(404).json({ message: 'No attendance record found for this index' });
+    }
     res.json(attendance);
   } catch (err) {
+    console.error(`Error occurred: ${err.message}`);
+    res.status(500).json({ message: err.message });
+  }
+});
+
+router.get('/all', async (req, res) => {
+  try {
+    const allAttendance = await Attendance.find({});
+    console.log(`All attendance records: ${JSON.stringify(allAttendance)}`);
+    res.json(allAttendance);
+  } catch (err) {
+    console.error(`Error occurred: ${err.message}`);
     res.status(500).json({ message: err.message });
   }
 });

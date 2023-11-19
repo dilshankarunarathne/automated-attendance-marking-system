@@ -3,6 +3,7 @@ import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import "./Results.css";
 import Topbar from '../components/topbar/Topbar';
+import Sidebar from '../components/sidebar/Sidebar';
 
 
 export default function Results() {
@@ -22,8 +23,9 @@ export default function Results() {
   }
 
   return (
-    <div>
+    <div className='root'>
         <Topbar/>
+        <Sidebar />
         <div className="results">
           <form onSubmit={searchByIndex} className="results-form">
             <label>Index:</label>

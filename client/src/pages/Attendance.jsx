@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 import Topbar from '../components/topbar/Topbar';
+import Sidebar from '../components/sidebar/Sidebar';
 
 export default function Attendance() {
   const { user } = useContext(AuthContext);
@@ -38,8 +39,9 @@ export default function Attendance() {
   }
 
   return (
-    <div>
+    <div className='root'>
       <Topbar/>
+      <Sidebar />
       <div className="attendance">
       <form onSubmit={searchByIndex}>
         <label>Index:</label>

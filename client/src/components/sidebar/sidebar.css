@@ -9,6 +9,10 @@
     color: aliceblue;
 }
 
+.activeLink {
+    color: #b8ee17; 
+}
+
 ::-webkit-scrollbar{
     width: 5px;
 }

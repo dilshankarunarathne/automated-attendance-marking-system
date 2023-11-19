@@ -4,37 +4,39 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import NoteAltIcon from '@mui/icons-material/NoteAlt';
 import PaymentIcon from '@mui/icons-material/Payment';
 import HomeIcon from '@mui/icons-material/Home';
-
+import { NavLink, useLocation } from 'react-router-dom'; 
 
 export default function Sidebar() {
+  const location = useLocation(); 
+
   return (
     <div className='sidebar'>
       <div className="sidebarWrapper">
           <ul className="sidebarList">
           <hr className='sidebarHr'/>
-              <li className="sidebarListItem" >
+              <li className={`sidebarListItem ${location.pathname === "/" ? "activeLink" : ""}`}>
                   <HomeIcon className='sidebarIcon'/>
-                  <a href="/"><span  className="sidebarListItemText" >
+                  <NavLink exact to="/"><span  className="sidebarListItemText" >
                     Home
-                  </span></a>
+                  </span></NavLink>
               </li>
-              <li className="sidebarListItem" >
+              <li className={`sidebarListItem ${location.pathname === "/Admin" ? "activeLink" : ""}`}>
                   <GroupsIcon className='sidebarIcon'/>
-                  <a href="/Admin"><span  className="sidebarListItemText" >
+                  <NavLink to="/Admin"><span  className="sidebarListItemText" >
                     Students
-                  </span></a>
+                  </span></NavLink>
               </li>
-              <li className="sidebarListItem" onClick={"/student"}>
-                  <a><NoteAltIcon className='sidebarIcon'/></a>
-                  <a className="sidebarListItemText" href='/attendance'>
-                    Attendence
-                  </a>
+              <li className={`sidebarListItem ${location.pathname === "/attendance" ? "activeLink" : ""}`}>
+                  <NoteAltIcon className='sidebarIcon'/>
+                  <NavLink to="/attendance" className="sidebarListItemText">
+                    Attendance
+                  </NavLink>
               </li>
-              <li className="sidebarListItem">
+              <li className={`sidebarListItem ${location.pathname === "/results" ? "activeLink" : ""}`}>
                   <PaymentIcon className='sidebarIcon'/>
-                  <a className="sidebarListItemText" href='/results'>
+                  <NavLink to="/results" className="sidebarListItemText">
                     Results
-                  </a>
+                  </NavLink>
               </li>
               <br></br>
               <br></br>

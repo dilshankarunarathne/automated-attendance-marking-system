@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@testmail.app/graphql-request": "^1.8.4",
     "axios": "^1.3.4",
     "react-router-dom": "^6.8.1"
   }

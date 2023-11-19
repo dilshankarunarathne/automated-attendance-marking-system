@@ -25,33 +25,45 @@ export default function Results() {
     <div>
         <Topbar/>
         <div className="results">
-        <form onSubmit={searchByIndex} className="results-form">
-        <label>Index:</label>
-        <input type="text" value={index} onChange={(e) => setIndex(e.target.value)} />
-        <button type="submit">Search by Index</button>
-        </form>
-        <table className="results-table">
+          <form onSubmit={searchByIndex} className="results-form">
+            <label>Index:</label>
+            <input type="text" value={index} onChange={(e) => setIndex(e.target.value)} />
+            <button type="submit">Search by Index</button>
+          </form>
+          <table className="results-table">
             <thead>
-            <tr>
+              <tr>
                 <th>Index</th>
-                <th>Grade</th>
                 <th>Semester</th>
-                <th>Subject</th>
-                <th>Mark</th>
-            </tr>
+                <th>Maths</th>
+                <th>Sinhala</th>
+                <th>Science</th>
+                <th>History</th>
+                <th>Religion</th>
+                <th>English</th>
+                <th>CAT1</th>
+                <th>CAT2</th>
+                <th>CAT3</th>
+              </tr>
             </thead>
             <tbody>
-            {resultsData.map((data) => (
+              {resultsData.map((data) => (
                 <tr key={data._id}>
-                <td>{data.index}</td>
-                <td>{data.grade}</td>
-                <td>{data.semester}</td>
-                <td>{data.subject}</td>
-                <td>{data.marks}</td>
+                  <td>{data.index}</td>
+                  <td>{data.semester}</td>
+                  <td>{data.maths}</td>
+                  <td>{data.sinhala}</td>
+                  <td>{data.science}</td>
+                  <td>{data.history}</td>
+                  <td>{data.religion}</td>
+                  <td>{data.english}</td>
+                  <td>{data.cat1}</td>
+                  <td>{data.cat2}</td>
+                  <td>{data.cat3}</td>
                 </tr>
-            ))}
+              ))}
             </tbody>
-        </table>
+          </table>
         </div>
     </div>
   );

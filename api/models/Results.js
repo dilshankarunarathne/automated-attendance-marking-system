@@ -5,22 +5,47 @@ const ResultsSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  grade: {
-    type: String,
-    required: true
-  },
   semester: {
     type: String,
-    required: true
+    required: true,
+    default: 'term test'
   },
-  subject: {
-    type: String,
-    required: true
-  },
-  marks: {
+  maths: {
     type: Number,
-    required: true
-  }
+    default: 0
+  },
+  sinhala: {
+    type: Number,
+    default: 0
+  },
+  science: {
+    type: Number,
+    default: 0
+  },
+  history: {
+    type: Number,
+    default: 0
+  },
+  religion: {
+    type: Number,
+    default: 0
+  },
+  english: {
+    type: Number,
+    default: 0
+  },
+  cat1: {
+    type: Number,
+    default: 0
+  },
+  cat2: {
+    type: Number,
+    default: 0
+  },
+  cat3: {
+    type: Number,
+    default: 0
+  },
 });
 
 module.exports = mongoose.model('Results', ResultsSchema);

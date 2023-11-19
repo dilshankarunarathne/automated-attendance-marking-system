@@ -70,6 +70,47 @@ nav ul li a
     color:aliceblue;
 }
 
+.studentList {
+    padding: 50px;
+}
+
+.root {
+    margin-top: 65px;
+    display: flex;
+    flex-direction: row;
+}
+
+th {
+    padding: 10px 40px;
+    text-align: center;
+    background-color: blueviolet;
+    color: aliceblue;
+}
+
+td {
+    padding: 10px 40px;
+    text-align: center;
+    background-color: aliceblue;
+    color: blueviolet;
+}
+
+button {
+    background-color: blueviolet;
+    color: aliceblue;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+form {
+    margin: 20px;
+    padding: 30px;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
 .resultForm label {
     display: block;
     margin-bottom: 10px;

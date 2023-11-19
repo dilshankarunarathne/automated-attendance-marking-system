@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Feed from '../components/feed/Feed';
 import Sidebar from '../components/sidebar/Sidebar';
 import Topbar from '../components/topbar/Topbar'
@@ -7,8 +8,10 @@ import "./Admin.css";
 import axios from 'axios';
 
 export default function AdminPage() {
-  const { user } = useContext(AuthContext);
   const [students, setStudents] = useState([]);
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+  const isAdmin = user.role;
 
   const [selectedStudent, setSelectedStudent] = useState(null);
 
@@ -42,6 +45,19 @@ export default function AdminPage() {
     }
   };
 
+  const handleCancel = () => {
+    setMaths(0);
+    setSinhala(0);
+    setScience(0);
+    setHistory(0);
+    setReligion(0);
+    setEnglish(0);
+    setCat1(0);
+    setCat2(0);
+    setCat3(0);
+    setSelectedStudent(null);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -60,10 +76,16 @@ export default function AdminPage() {
     navigator("/login");
   };
 
+  useEffect(() => {
+    if (!isAdmin) {
+      navigate('/'); 
+    }
+  }, [isAdmin, navigate]);
+
   return (
-    <div>
+    <div >
         <Topbar/>
-        <div className="homeContainer">
+        <div className="root">
             <Sidebar/>
             
             <div className='studentList'>
@@ -120,6 +142,7 @@ export default function AdminPage() {
                                 Cat3: <input type="number" name="cat3" value={cat3} onChange={(e) => setCat3(e.target.value)} />
                             </label>
                             <button type="submit">Submit</button>
+                            <button type="button" onClick={handleCancel}>Cancel</button>
                         </form>
                     </div>
                 )}

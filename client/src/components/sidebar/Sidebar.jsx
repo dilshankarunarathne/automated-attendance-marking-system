@@ -20,7 +20,7 @@ export default function Sidebar() {
               </li>
               <li className="sidebarListItem" >
                   <GroupsIcon className='sidebarIcon'/>
-                  <a href=""><span  className="sidebarListItemText" >
+                  <a href="/Admin"><span  className="sidebarListItemText" >
                     Students
                   </span></a>
               </li>

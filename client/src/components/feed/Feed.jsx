@@ -7,7 +7,6 @@ import './feed.css'
 import  { useContext ,useState} from 'react'
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-// import { set } from 'mongoose';
 
 
 export default function Feed() {
@@ -27,9 +26,6 @@ export default function Feed() {
     const [gender, setGender] = useState("");
     const [dateOfBirth, setDateOfBirth] = useState("");
     const [age, setAge] = useState("");
-    const [height, setHeight] = useState("");
-    const [weight, setWeight] = useState("");
-    const [bmi, setBmi] = useState("");
     
     function sendData(e){
         e.preventDefault();
@@ -43,9 +39,6 @@ export default function Feed() {
             gender,
             dateOfBirth,
             age,
-            height,
-            weight,
-            bmi: Number(bmi)
         }
         
         const res = axios.put(`http://localhost:8800/users/${id}`, upStudent)
@@ -68,9 +61,6 @@ export default function Feed() {
             setGender(userData.gender);
             setDateOfBirth(userData.dateOfBirth);
             setAge(userData.age);
-            setHeight(userData.height);
-            setWeight(userData.weight);
-            setBmi(userData.bmi);
           })
           .catch((err) => {
             console.error(err);
@@ -144,27 +134,6 @@ export default function Feed() {
                             <input type="text" class="form-control" placeholder="enter your age" value={age} 
                             onChange={(e)=>{
                                 setAge(e.target.value);
-                            }}/>
-                            </div>
-
-                            <div class="col-md-12"><label class="labels">Height</label>
-                            <input type="text" class="form-control" placeholder="enter height in centemeters" value={height}
-                            onChange={(e)=>{
-                                setHeight(e.target.value);
-                            }}/>
-                            </div>
-
-                            <div class="col-md-12"><label class="labels">Weight</label>
-                            <input type="text" class="form-control" placeholder="enter weight in kilograms" value={weight}
-                            onChange={(e)=>{
-                                setWeight(e.target.value);
-                            }}/>
-                            </div>
-
-                            <div class="col-md-12"><label class="labels">BMI Value</label>
-                            <input type="text" class="form-control" placeholder="your BMI value" value={bmi} 
-                            onChange={(e)=>{
-                                setBmi(e.target.value);
                             }}/>
                             </div>
 

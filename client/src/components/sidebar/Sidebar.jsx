@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import  './sidebar.css'
 import GroupsIcon from '@mui/icons-material/Groups';
 import NoteAltIcon from '@mui/icons-material/NoteAlt';
 import PaymentIcon from '@mui/icons-material/Payment';
 import HomeIcon from '@mui/icons-material/Home';
-import { NavLink, useLocation } from 'react-router-dom'; 
+import { NavLink, useLocation } from 'react-router-dom';
+
+import { AuthContext } from '../../context/AuthContext'
 
 export default function Sidebar() {
   const location = useLocation(); 
+  const { user } = useContext(AuthContext); 
+
+  const role = user.role;
+  console.log(role);
 
   return (
     <div className='sidebar'>
@@ -20,12 +26,16 @@ export default function Sidebar() {
                     Home
                   </span></NavLink>
               </li>
-              <li className={`sidebarListItem ${location.pathname === "/Admin" ? "activeLink" : ""}`}>
-                  <GroupsIcon className='sidebarIcon'/>
-                  <NavLink to="/Admin"><span  className="sidebarListItemText" >
-                    Students
-                  </span></NavLink>
-              </li>
+              
+              {role !== false && (
+                <li className={`sidebarListItem ${location.pathname === "/Admin" ? "activeLink" : ""}`}>
+                    <GroupsIcon className='sidebarIcon'/>
+                    <NavLink to="/Admin"><span  className="sidebarListItemText" >
+                      Students
+                    </span></NavLink>
+                </li>
+              )}
+
               <li className={`sidebarListItem ${location.pathname === "/attendance" ? "activeLink" : ""}`}>
                   <NoteAltIcon className='sidebarIcon'/>
                   <NavLink to="/attendance" className="sidebarListItemText">

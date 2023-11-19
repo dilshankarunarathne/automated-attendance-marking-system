@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 export default function Feed() {
   const { user } = useContext(AuthContext);
     const id = user.user._id;
+    const role = user.role;
 
   const logout = () => {
     localStorage.clear();
@@ -100,12 +101,18 @@ export default function Feed() {
                                     }}
                             /></div>
 
-                            <div class="col-md-6"><label class="labels">Index Number</label>
-                            <input type="text" class="form-control" value={index} placeholder="index number"
-                                    onChange={(e)=>{
-                                        setIndex(e.target.value);
-                                    }}
-                            /></div>
+                            {/* removed index input from teachers */}
+                            {role === false && (
+                            <div class="col-md-6">
+                                <label class="labels">Index Number</label>
+                                <input type="text" class="form-control" value={index} placeholder="index number"
+                                onChange={(e)=>{
+                                    setIndex(e.target.value);
+                                }}
+                                />
+                            </div>
+                            )}
+
                         </div>
                         
                         <div class="row mt-3">

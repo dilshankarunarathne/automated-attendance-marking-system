@@ -17,7 +17,21 @@ export const Login = () => {
     loginCall(
       { email: email.current.value, password: password.current.value },
       dispatch
-    );
+    )
+    .then((response) => {
+      console.log(response.role);
+      // Check the user's role and redirect
+      if (response.role === true) {
+        // Redirect to admin homepage
+        window.location.href = "/admin";
+      } else {
+        // Redirect to user homepage
+        window.location.href = "/";
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   };
 
   console.log(user);

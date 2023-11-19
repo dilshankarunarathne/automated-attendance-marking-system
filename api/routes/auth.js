@@ -60,7 +60,7 @@ router.post("/login", async (req, res) => {
       return res.status(400).json("wrong password");
     }
 
-    res.status(200).json(user);
+    res.status(200).json({ user, role: user.isAdmin });
   } catch (error) {
     console.log('Error:', error);
     res.status(200).json({ user, role: user.isAdmin });

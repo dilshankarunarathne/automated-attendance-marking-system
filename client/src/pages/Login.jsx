@@ -10,6 +10,7 @@ export const Login = () => {
   const email = useRef();
   const password = useRef();
   const { user, isFetching, error, dispatch } = useContext(AuthContext);
+  
   const handleClick = (e) => {
     e.preventDefault();
     console.log(email.current.value);
@@ -18,6 +19,7 @@ export const Login = () => {
       dispatch
     );
   };
+
   console.log(user);
 
   const paperStyle = {

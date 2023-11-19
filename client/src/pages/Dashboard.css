@@ -65,5 +65,5 @@ nav ul li a
 
 .homeContainer{
     display: flex;
-    flex-direction: row;
+    flex-direction: row !important;
 }

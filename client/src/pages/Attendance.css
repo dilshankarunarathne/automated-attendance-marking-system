@@ -4,9 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /* background-color: #f0f0f0; */
-    /* get to page top */
-    margin-top: -780px;
+    margin-top: -600px; /* Aligns the component with the top of the page */
 }
 
 .root {

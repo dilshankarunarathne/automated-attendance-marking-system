@@ -34,7 +34,7 @@ export const Login = () => {
       // Check the user's role and redirect
       if (response.role === true) {
         // Redirect to admin homepage
-        window.location.href = "/admin";
+        window.location.href = "/";
       } else {
         // Redirect to user homepage
         window.location.href = "/";

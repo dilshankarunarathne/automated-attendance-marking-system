@@ -1,9 +1,9 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import './Attendance.css'
-import  { useContext ,useState} from 'react'
-import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState, useEffect } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 import Topbar from '../components/topbar/Topbar';
 import Sidebar from '../components/sidebar/Sidebar';
@@ -14,9 +14,15 @@ export default function Attendance() {
   const [date, setDate] = useState("");
   const [attendanceData, setAttendanceData] = useState([]);
 
-  async function searchByIndex(e) {
-    e.preventDefault();
+  useEffect(() => {
+    if (user && !user.role) {
+      searchByIndex(user.user.index);
+    }
+  }, [user]);
 
+  // console.log(user);
+
+  async function searchByIndex(index) {
     try {
       const response = await axios.get(`http://localhost:8800/attendance/index/${index}`);
       console.log(response.data);
@@ -43,16 +49,20 @@ export default function Attendance() {
       <Topbar/>
       <Sidebar />
       <div className="attendance">
-      <form onSubmit={searchByIndex}>
-        <label>Index:</label>
-        <input type="text" value={index} onChange={(e) => setIndex(e.target.value)} />
-        <button type="submit">Search by Index</button>
-      </form>
-      <form onSubmit={searchByDate}>
-        <label>Date:</label>
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-        <button type="submit">Search by Date</button>
-      </form>
+      {user && user.role && (
+        <>
+          <form onSubmit={(e) => { e.preventDefault(); searchByIndex(index); }}>
+            <label>Index:</label>
+            <input type="text" value={index} onChange={(e) => setIndex(e.target.value)} />
+            <button type="submit">Search by Index</button>
+          </form>
+          <form onSubmit={searchByDate}>
+            <label>Date:</label>
+            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+            <button type="submit">Search by Date</button>
+          </form>
+        </>
+      )}
       <table>
         <thead>
           <tr>

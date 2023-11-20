@@ -25,7 +25,7 @@ router.post('/result/:index', async (req, res) => {
   
       const result = new Results({
         index,
-        semester: 'term test', 
+        semester: req.body.semester, 
         maths: req.body.maths,
         sinhala: req.body.sinhala,
         science: req.body.science,

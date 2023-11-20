@@ -15,6 +15,7 @@ export default function AdminPage() {
 
   const [selectedStudent, setSelectedStudent] = useState(null);
 
+  const [semester, setSemester] = useState('');
   const [maths, setMaths] = useState(0);
   const [sinhala, setSinhala] = useState(0);
   const [science, setScience] = useState(0);
@@ -38,7 +39,8 @@ export default function AdminPage() {
         english,
         cat1,
         cat2,
-        cat3
+        cat3,
+        semester
       });
     } catch (error) {
       console.error('Failed to submit results', error);
@@ -55,6 +57,7 @@ export default function AdminPage() {
     setCat1(0);
     setCat2(0);
     setCat3(0);
+    setSemester('');
     setSelectedStudent(null);
   };
 
@@ -114,6 +117,9 @@ export default function AdminPage() {
                 {selectedStudent && (
                     <div>
                         <form onSubmit={handleSubmit}>
+                            <label>
+                              Semester: <input type="text" name="semester" value={semester} onChange={(e) => setSemester(e.target.value)} />
+                            </label>
                             <label>
                                 Maths: <input type="number" name="maths" value={maths} onChange={(e) => setMaths(e.target.value)} />
                             </label>

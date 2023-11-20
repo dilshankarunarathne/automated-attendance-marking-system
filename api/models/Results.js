@@ -7,8 +7,7 @@ const ResultsSchema = new mongoose.Schema({
   },
   semester: {
     type: String,
-    required: true,
-    default: 'term test'
+    required: true
   },
   maths: {
     type: Number,

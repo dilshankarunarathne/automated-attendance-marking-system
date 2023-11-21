@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const Student = require("../models/Student");
+const Mode = require("../models/Mode");
+const mongoose = require("mongoose");
 
 const bcrypt = require("bcrypt");
 const multer = require("multer");
@@ -16,19 +18,36 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// get last fingerprint id 
+function getLastFingerprintId() {
+  return new Promise((resolve, reject) => {
+      Mode.findOne({ "_id": mongoose.Types.ObjectId("655ce17d192d287738cc9b53") }, (err, mode) => {
+          if (err) {
+              reject(err);
+          }
+          resolve(mode.last_fingerprint_id);
+      });
+  });
+}
+
 //register
 router.post("/register", async (req, res) => {
   let user = null;
 
   //get next fingerprint id
-  const users = await User.find();
-  let nextFingerprintId = 0;
-  users.forEach((user) => {
-    if (user.fingerprint_id > nextFingerprintId) {
-      nextFingerprintId = user.fingerprint_id;
-    }
-  });
-  nextFingerprintId++;
+
+  // const users = await User.find();
+  // let nextFingerprintId = 0;
+  // users.forEach((user) => {
+  //   if (user.fingerprint_id > nextFingerprintId) {
+  //     nextFingerprintId = user.fingerprint_id;
+  //   }
+  // });
+  // nextFingerprintId++;
+  // console.log("next fingerprint id: " + nextFingerprintId);
+
+  const lastFingerprintId = await getLastFingerprintId();
+  const nextFingerprintId = lastFingerprintId + 1;
   console.log("next fingerprint id: " + nextFingerprintId);
 
   try {
@@ -94,6 +113,11 @@ router.post("/register-fingerprint", async (req, res) => {
       }
 
       console.log("successful registration for fingerprint_id: " + fingerprint_id + " user: " + user.name);
+
+      // update last fingerprint id
+      const mode = await Mode.findOne({ "_id": mongoose.Types.ObjectId("655ce17d192d287738cc9b53") });
+      mode.last_fingerprint_id = fingerprint_id;
+      await mode.save();
     }
     
     res.status(200).json({ fingerprint_id, success });

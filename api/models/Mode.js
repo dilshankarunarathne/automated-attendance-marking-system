@@ -11,6 +11,10 @@ const ModeSchema = new mongoose.Schema({
         default: false,
         required: true
     },
+    last_fingerprint_id : {
+        type: Number,
+        required: true
+    }
 });
 
 module.exports = mongoose.model('Mode', ModeSchema);

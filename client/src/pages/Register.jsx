@@ -45,25 +45,25 @@ export const Register = () => {
       
       try {
         await axios.post("http://localhost:8800/api/auth/register", user);
-
+      
         // Dispatch login start action
         dispatch({ type: "LOGIN_START" });
-
+      
         // Try to login the user
         const loginResponse = await axios.post("http://localhost:8800/api/auth/login", {
           email: user.email,
           password: user.password,
         });
-
+      
         // Dispatch login success action
         dispatch({ type: "LOGIN_SUCCESS", payload: loginResponse.data });
-
-        navigate("/");
+      
+        navigate("/fingerprint"); // navigate to FingerprintRegisterPage
       } catch (error) {
         // Dispatch login failure action
         dispatch({ type: "LOGIN_FAILURE", payload: error });
       }
-
+      
       };
     }
 
@@ -78,7 +78,6 @@ export const Register = () => {
   const btnStyle = {margin: '10px 0',width : '100%' }
   const typoStyle = {margin: '5px 0'}
   const textStyle = {margin: '3px 0' }
-
 
   return (
     <div>

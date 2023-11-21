@@ -11,7 +11,7 @@ import Dashboard from './pages/Dashboard';
 import Attendance from './pages/Attendance';
 import Results from './pages/Results';
 import AdminPage from './pages/Admin';
-
+import { FingerprintRegisterPage } from './pages/FingerprintRegistration';
 
 function App() {
   const {user}=useContext(AuthContext)
@@ -25,6 +25,7 @@ function App() {
        <Route path='/attendance' element={<Attendance />} />
        <Route path='/results' element={<Results />} />
        <Route path='/admin' element={<AdminPage />} />
+       <Route path='/fingerprint' element={<FingerprintRegisterPage />} />
     </Routes>
   </BrowserRouter>
 

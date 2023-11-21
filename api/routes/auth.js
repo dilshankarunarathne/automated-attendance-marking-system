@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/User");
+const Student = require("../models/Student");
 
 const bcrypt = require("bcrypt");
 const multer = require("multer");
@@ -22,27 +23,50 @@ router.post("/register", async (req, res) => {
     //generate ne password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    
-    //create new user
-    const newUser = new User({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-      password: hashedPassword,
-      phone: req.body.phone,
-    });
-    console.log(newUser.phone)
 
-    //save user and return response
-    const user = await newUser.save();
+    // create new student 
+    if (req.body.role === false) {
+      //create new user
+      const newUser = new User({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: hashedPassword,
+        phone: req.body.phone,
+        index: req.body.index,
+      });
+      console.log(newUser.phone)
+      const user = await newUser.save();
+
+      const newName = req.body.firstname + " " + req.body.lastname;      
+      const newStudent = new Student({
+        index: req.body.index,
+        name: newName,
+      });
+      const student = await newStudent.save();
+    } else {
+      //create new user
+      const newUser = new User({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: hashedPassword,
+        phone: req.body.phone,
+      });
+      console.log(newUser.phone)
+
+      //save user and return response
+      const user = await newUser.save();
+    }
+
     res.status(200).json(user);
   } catch (error) {
+    console.log('Error:', error);
     res.status(500).json(error);
   }
 });
 
 //Login
-
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });

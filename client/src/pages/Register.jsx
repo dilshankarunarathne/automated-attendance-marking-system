@@ -13,7 +13,8 @@ export const Register = () => {
   const email = useRef();
   const password = useRef();
   const cpassword = useRef();
-  //const [file, setFile] = useState(null);
+  const [role, setRole] = useState(false); 
+  const [index, setIndex] = useState(null); // New state variable for index
 
   const navigate = useNavigate();
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -31,6 +32,8 @@ export const Register = () => {
         phone: phone.current.value,
         email: email.current.value,
         password: password.current.value,
+        role: role, 
+        index: role ? null : index, 
       };
       
       try {
@@ -90,6 +93,19 @@ export const Register = () => {
                             <input type="password" class="form-control" id="cpassword" placeholder="ReEnter Password"
                             ref={cpassword}/>   
                         </div>
+
+                        <div class="mb-3">
+                          <label>
+                            <input type="checkbox" checked={role} onChange={(e) => setRole(e.target.checked)} />
+                            I am a teacher
+                          </label>
+                        </div>
+                        {!role && (
+                          <div class="mb-3">
+                            <input type="text" class="form-control" id="index" placeholder="Enter Index" 
+                            onChange={(e) => setIndex(e.target.value)} />
+                          </div>
+                        )}
 
                         <button style={btnStyle} type="submit" class="btn btn-primary">Submit</button>
                      </form>

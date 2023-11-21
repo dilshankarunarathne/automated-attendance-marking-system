@@ -99,7 +99,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-//register fingerprint
+//register fingerprint -> tested OK
 router.post("/register-fingerprint", async (req, res) => {
   try {
     const fingerprint_id = req.body.fingerprint_id;

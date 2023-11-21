@@ -18,6 +18,7 @@ const upload = multer({ storage: storage });
 
 //register
 router.post("/register", async (req, res) => {
+  let user = null;
 
   try {
     //generate ne password
@@ -26,7 +27,7 @@ router.post("/register", async (req, res) => {
 
     // create new student 
     if (req.body.role === false) {
-      //create new user
+      //create new student
       const newUser = new User({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
@@ -36,7 +37,7 @@ router.post("/register", async (req, res) => {
         index: req.body.index,
       });
       console.log(newUser.phone)
-      const user = await newUser.save();
+      user = await newUser.save();
 
       const newName = req.body.firstname + " " + req.body.lastname;      
       const newStudent = new Student({
@@ -45,18 +46,18 @@ router.post("/register", async (req, res) => {
       });
       const student = await newStudent.save();
     } else {
-      //create new user
+      //create new teacher
       const newUser = new User({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
         password: hashedPassword,
         phone: req.body.phone,
+        isAdmin: true,
       });
-      console.log(newUser.phone)
 
       //save user and return response
-      const user = await newUser.save();
+      user = await newUser.save();
     }
 
     res.status(200).json(user);

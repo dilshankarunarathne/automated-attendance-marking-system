@@ -29,7 +29,7 @@ router.put("/:id", async (req, res) => {
           phone: req.body.phone,
           email: req.body.email,
           gender: req.body.gender,
-          dateOfBirth: req.body.dateOfBirth,
+          dob: req.body.dateOfBirth,
           age: req.body.age,
         }
       }, {new: true});

@@ -26,7 +26,7 @@ export default function Feed() {
     const [phone, setPhone] = useState(user.phone);
     const [email, setEmail] = useState(user.email);
     const [gender, setGender] = useState("");
-    const [dateOfBirth, setDateOfBirth] = useState("");
+    const [dob, setDob] = useState("");
     const [age, setAge] = useState("");
     
     function sendData(e){
@@ -40,7 +40,7 @@ export default function Feed() {
             phone,
             email,
             gender,
-            dateOfBirth,
+            dob,
             age,
         }
         
@@ -63,8 +63,15 @@ export default function Feed() {
             setPhone(userData.phone);
             setEmail(userData.email);
             setGender(userData.gender);
-            setDateOfBirth(userData.dateOfBirth);
             setAge(userData.age);
+
+            // Convert the date from ISO format to "yyyy-MM-dd" format
+            const date = new Date(userData.dob);
+            const year = date.getFullYear();
+            const month = ("0" + (date.getMonth() + 1)).slice(-2); // getMonth() is zero-indexed, so we must add 1
+            const day = ("0" + date.getDate()).slice(-2);
+            const formattedDate = `${year}-${month}-${day}`;
+            setDob(formattedDate);
           })
           .catch((err) => {
             console.error(err);
@@ -142,9 +149,9 @@ export default function Feed() {
                             </select></div>
 
                             <div class="col-md-12"><label class="labels">Date of Birth</label>
-                            <input type="Date" class="form-control" placeholder="date of birth" value={dateOfBirth}
+                            <input type="Date" class="form-control" placeholder="date of birth" value={dob}
                             onChange={(e)=>{
-                                setDateOfBirth(e.target.value);
+                                setDob(e.target.value);
                             }}/>
                             </div>
 

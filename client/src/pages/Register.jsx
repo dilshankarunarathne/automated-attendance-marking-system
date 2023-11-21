@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 import axios from "axios";
 import { Avatar, Grid, Paper, TextField, Checkbox, FormControlLabel, Button, Typography, Link } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle'
-
+import { AuthContext } from '../context/AuthContext';
 
 export const Register = () => {
   const firstname = useRef();
@@ -19,7 +19,8 @@ export const Register = () => {
   const navigate = useNavigate();
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  
+  const { dispatch } = useContext(AuthContext);
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -38,8 +39,25 @@ export const Register = () => {
       
       try {
         await axios.post("http://localhost:8800/api/auth/register", user);
+
+        // Dispatch login start action
+        dispatch({ type: "LOGIN_START" });
+
+        // Try to login the user
+        const loginResponse = await axios.post("http://localhost:8800/api/auth/login", {
+          email: user.email,
+          password: user.password,
+        });
+
+        // Dispatch login success action
+        dispatch({ type: "LOGIN_SUCCESS", payload: loginResponse.data });
+
         navigate("/");
-      } catch (error) {}
+      } catch (error) {
+        // Dispatch login failure action
+        dispatch({ type: "LOGIN_FAILURE", payload: error });
+      }
+
       };
     }
 

@@ -69,7 +69,7 @@ router.get('/mode', async (req, res) => {
     }
 });
 
-// mark attendance via fingerprint
+// mark attendance via fingerprint -> tested OK
 router.post('/mark', async (req, res) => {
     const { fingerprint_id } = req.body;
     console.log(`Fingerprint received for attendance: ${fingerprint_id}`);

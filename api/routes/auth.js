@@ -20,6 +20,17 @@ const upload = multer({ storage: storage });
 router.post("/register", async (req, res) => {
   let user = null;
 
+  //get next fingerprint id
+  const users = await User.find();
+  let nextFingerprintId = 0;
+  users.forEach((user) => {
+    if (user.fingerprint_id > nextFingerprintId) {
+      nextFingerprintId = user.fingerprint_id;
+    }
+  });
+  nextFingerprintId++;
+  console.log("next fingerprint id: " + nextFingerprintId);
+
   try {
     //generate ne password
     const salt = await bcrypt.genSalt(10);
@@ -35,6 +46,8 @@ router.post("/register", async (req, res) => {
         password: hashedPassword,
         phone: req.body.phone,
         index: req.body.index,
+        has_registered: false,
+        fingerprint_id: nextFingerprintId,
       });
       console.log(newUser.phone)
       user = await newUser.save();
@@ -61,6 +74,29 @@ router.post("/register", async (req, res) => {
     }
 
     res.status(200).json(user);
+  } catch (error) {
+    console.log('Error:', error);
+    res.status(500).json(error);
+  }
+});
+
+//register fingerprint
+router.post("/register-fingerprint", async (req, res) => {
+  try {
+    const fingerprint_id = req.body.fingerprint_id;
+    const success = req.body.success;
+
+    if (success) {
+      const user = await User.findOne({ fingerprint_id: fingerprint_id });
+      if (user) {
+        user.has_registered = true;
+        await user.save();
+      }
+
+      console.log("successful registration for fingerprint_id: " + fingerprint_id + " user: " + user.name);
+    }
+    
+    res.status(200).json({ fingerprint_id, success });
   } catch (error) {
     console.log('Error:', error);
     res.status(500).json(error);

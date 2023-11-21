@@ -46,12 +46,11 @@ router.get('/all', async (req, res) => {
   }
 });
 
-
-router.post('/testMark', async (req, res) => {
-  const { email } = req.params;
-  console.log(`Sending attended notification to: ${email}`);
-  sendEmail(email, 'You have attended', '<b>You have attended to class...</b>');
-});
+// router.post('/testMark', async (req, res) => {
+//   const { email } = req.params;
+//   console.log(`Sending attended notification to: ${email}`);
+//   sendEmail(email, 'You have attended', '<b>You have attended to class...</b>');
+// });
 
 
 /*

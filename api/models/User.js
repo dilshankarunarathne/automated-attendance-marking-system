@@ -19,6 +19,15 @@ const UserSchema = new mongoose.Schema(
       required: true,
       min: 6,
     },
+    fingerprint_id: {
+      type: Number,
+      required: true,
+    },
+    has_registered: {
+      type: Boolean,
+      default: false,
+      required: true,
+    },
     phone:{
       type: String,
       required: true,

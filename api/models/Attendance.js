@@ -12,7 +12,11 @@ const AttendanceSchema = new mongoose.Schema({
   index: {
     type: String,
     required: true
-  }
+  },
+  fingerprint_id: {
+    type: Number,
+    required: false
+  },
 });
 
 module.exports = mongoose.model('Attendance', AttendanceSchema);

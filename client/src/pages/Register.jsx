@@ -14,7 +14,7 @@ export const Register = () => {
   const password = useRef();
   const cpassword = useRef();
   const [role, setRole] = useState(false); 
-  const [index, setIndex] = useState(null); // New state variable for index
+  const [index, setIndex] = useState(null); 
 
   const navigate = useNavigate();
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;

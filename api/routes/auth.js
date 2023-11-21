@@ -117,6 +117,8 @@ router.post("/register-fingerprint", async (req, res) => {
       // update last fingerprint id
       const mode = await Mode.findOne({ "_id": mongoose.Types.ObjectId("655ce17d192d287738cc9b53") });
       mode.last_fingerprint_id = fingerprint_id;
+      mode.is_register_mode = false;
+      mode.is_attendance_mode = true;
       await mode.save();
     }
     

@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require("mongoose");
 const Attendance = require('../models/Attendance'); 
 const Mode = require('../models/Mode');
+const User = require('../models/User');
 
 const router = express.Router();
 
@@ -75,10 +76,11 @@ router.post('/mark', async (req, res) => {
 
     // Use fingerprint_data to find the student index number
     const user = await User.findOne({ fingerprint_id: fingerprint_id });
-    if (!user) {
+    if (!user || fingerprint_id === undefined) {
         console.log('User not found');
         return res.status(404).send("user not found");
     }
+    console.log("User found with fingerprint id " + fingerprint_id + " " + user.firstname);
     const fingerprintIndex = user.index;
 
     const newAttendance = new Attendance({

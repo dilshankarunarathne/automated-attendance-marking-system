@@ -34,18 +34,6 @@ function getLastFingerprintId() {
 router.post("/register", async (req, res) => {
   let user = null;
 
-  //get next fingerprint id
-
-  // const users = await User.find();
-  // let nextFingerprintId = 0;
-  // users.forEach((user) => {
-  //   if (user.fingerprint_id > nextFingerprintId) {
-  //     nextFingerprintId = user.fingerprint_id;
-  //   }
-  // });
-  // nextFingerprintId++;
-  // console.log("next fingerprint id: " + nextFingerprintId);
-
   const lastFingerprintId = await getLastFingerprintId();
   const nextFingerprintId = lastFingerprintId + 1;
   console.log("next fingerprint id: " + nextFingerprintId);

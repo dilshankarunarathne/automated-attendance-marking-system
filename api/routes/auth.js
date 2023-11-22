@@ -86,6 +86,7 @@ router.post("/register", async (req, res) => {
         password: hashedPassword,
         phone: req.body.phone,
         isAdmin: true,
+        fingerprint_id: 0, // for teachers
       });
 
       //save user and return response

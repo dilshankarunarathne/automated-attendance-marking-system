@@ -58,7 +58,8 @@ export const Register = () => {
         // Dispatch login success action
         dispatch({ type: "LOGIN_SUCCESS", payload: loginResponse.data });
       
-        navigate("/fingerprint"); // navigate to FingerprintRegisterPage
+        // Navigate based on role
+        navigate(role ? "/" : "/fingerprint");
       } catch (error) {
         // Dispatch login failure action
         dispatch({ type: "LOGIN_FAILURE", payload: error });

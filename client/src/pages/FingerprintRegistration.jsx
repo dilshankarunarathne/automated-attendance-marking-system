@@ -35,10 +35,21 @@ export const FingerprintRegisterPage = () => {
 
         if (!response.data.is_register_mode && response.data.is_attendance_mode) {
           clearInterval(intervalId);
+
+          // START mock one attendance record 
+        
+          const attendanceResponse = await axios.post('http://localhost:8800/fingerprint/mark', {
+            fingerprint_id: lastFingerprintId,
+          });
+
+          console.log(attendanceResponse.data);
+
+          // END mock one attendance record
+
           navigate('/');
         }
   
-        // mock fingerprint registration
+        // START mock fingerprint registration
         
         console.log('trying to verify fingerprint id: ', lastFingerprintId);
   
@@ -53,7 +64,8 @@ export const FingerprintRegisterPage = () => {
           console.error('lastFingerprintId is not initialized');
         }
 
-        // end of mock fingerprint registration
+        // END mock fingerprint registration
+        
       } catch (error) {
         console.error(error);
       }

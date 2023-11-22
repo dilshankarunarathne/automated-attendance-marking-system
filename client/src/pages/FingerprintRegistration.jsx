@@ -3,8 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export const FingerprintRegisterPage = () => {
-    console.log("FingerprintRegisterPage");
-    
   const [isRegisterMode, setIsRegisterMode] = useState(false);
   const [lastFingerprintId, setLastFingerprintId] = useState(null);
   const navigate = useNavigate();
@@ -27,27 +25,44 @@ export const FingerprintRegisterPage = () => {
 
   useEffect(() => {
     if (!isRegisterMode) return;
-
+  
     const intervalId = setInterval(async () => {
       try {
         const response = await axios.get('http://localhost:8800/fingerprint/mode');
+        setLastFingerprintId(response.data.last_fingerprint_id);
         if (!response.data.is_register_mode && response.data.is_attendance_mode) {
+          console.log('fout');
           clearInterval(intervalId);
-          setLastFingerprintId(response.data.last_fingerprint_id);
           navigate('/');
+        }
+  
+        // mock fingerprint registration
+        // do a post request to http://localhost:8800/api/auth/register-fingerprint with json body '{"fingerprint_id": <lastFingerprintId>, "success": true}'
+        
+        console.log('lastFingerprintId', lastFingerprintId);
+  
+        if (lastFingerprintId !== null && lastFingerprintId !== undefined) {
+          const registerFingerprintResponse = await axios.post('http://localhost:8800/api/auth/register-fingerprint', {
+            fingerprint_id: lastFingerprintId+1,
+            success: true,
+          });
+        
+          console.log(registerFingerprintResponse.data);
+        } else {
+          console.error('lastFingerprintId is not initialized');
         }
       } catch (error) {
         console.error(error);
       }
     }, 8000);
-
+  
     return () => clearInterval(intervalId);
-  }, [isRegisterMode, navigate]);
+  }, [isRegisterMode, navigate, lastFingerprintId]); 
 
   return (
     <div>
       {isRegisterMode ? 'Place fingerprint on the sensor' : ''}
-      {lastFingerprintId ? `Fingerprint registration successful for UID ${lastFingerprintId}` : ''}
+      {lastFingerprintId ? `Fingerprint registration successful for UID ${lastFingerprintId+1}` : ''}
     </div>
   );
 };

@@ -40,18 +40,18 @@ export const FingerprintRegisterPage = () => {
   
         // mock fingerprint registration
         
-        // console.log('trying to verify fingerprint id: ', lastFingerprintId);
+        console.log('trying to verify fingerprint id: ', lastFingerprintId);
   
-        // if (lastFingerprintId !== null && lastFingerprintId !== undefined) {
-        //   const registerFingerprintResponse = await axios.post('http://localhost:8800/api/auth/register-fingerprint', {
-        //     fingerprint_id: lastFingerprintId,
-        //     success: true,
-        //   });
+        if (lastFingerprintId !== null && lastFingerprintId !== undefined) {
+          const registerFingerprintResponse = await axios.post('http://localhost:8800/api/auth/register-fingerprint', {
+            fingerprint_id: lastFingerprintId,
+            success: true,
+          });
         
-        //   console.log(registerFingerprintResponse.data);
-        // } else {
-        //   console.error('lastFingerprintId is not initialized');
-        // }
+          console.log(registerFingerprintResponse.data);
+        } else {
+          console.error('lastFingerprintId is not initialized');
+        }
 
         // end of mock fingerprint registration
       } catch (error) {

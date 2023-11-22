@@ -65,6 +65,14 @@ router.post("/register", async (req, res) => {
         name: newName,
       });
       const student = await newStudent.save();
+
+      // update last fingerprint id
+      const mode = await Mode.findOne({ "_id": mongoose.Types.ObjectId("655ce17d192d287738cc9b53") });
+      mode.last_fingerprint_id = nextFingerprintId;
+      mode.is_register_mode = true;
+      mode.is_attendance_mode = false;
+      await mode.save();
+      console.log("last fingerprint id incremented after registration: " + mode.last_fingerprint_id);
     } else {
       //create new teacher
       const newUser = new User({
@@ -94,6 +102,8 @@ router.post("/register-fingerprint", async (req, res) => {
     const fingerprint_id = req.body.fingerprint_id;
     const success = req.body.success;
 
+    console.log("requested registration for fingerprint_id: " + fingerprint_id + " success: " + success);
+
     if (success) {
       const user = await User.findOne({ fingerprint_id: fingerprint_id });
       if (user) {
@@ -105,7 +115,7 @@ router.post("/register-fingerprint", async (req, res) => {
 
       // update last fingerprint id
       const mode = await Mode.findOne({ "_id": mongoose.Types.ObjectId("655ce17d192d287738cc9b53") });
-      mode.last_fingerprint_id = fingerprint_id;
+      // mode.last_fingerprint_id = fingerprint_id;
       mode.is_register_mode = false;
       mode.is_attendance_mode = true;
       await mode.save();

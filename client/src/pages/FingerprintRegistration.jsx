@@ -30,8 +30,10 @@ export const FingerprintRegisterPage = () => {
       try {
         const response = await axios.get('http://localhost:8800/fingerprint/mode');
         setLastFingerprintId(response.data.last_fingerprint_id);
+
+        console.log('mode response: ', response.data);
+
         if (!response.data.is_register_mode && response.data.is_attendance_mode) {
-          console.log('fout');
           clearInterval(intervalId);
           navigate('/');
         }
@@ -39,11 +41,11 @@ export const FingerprintRegisterPage = () => {
         // mock fingerprint registration
         // do a post request to http://localhost:8800/api/auth/register-fingerprint with json body '{"fingerprint_id": <lastFingerprintId>, "success": true}'
         
-        console.log('lastFingerprintId', lastFingerprintId);
+        console.log('trying to verify fingerprint id: ', lastFingerprintId);
   
         if (lastFingerprintId !== null && lastFingerprintId !== undefined) {
           const registerFingerprintResponse = await axios.post('http://localhost:8800/api/auth/register-fingerprint', {
-            fingerprint_id: lastFingerprintId+1,
+            fingerprint_id: lastFingerprintId,
             success: true,
           });
         
@@ -61,8 +63,8 @@ export const FingerprintRegisterPage = () => {
 
   return (
     <div>
-      {isRegisterMode ? 'Place fingerprint on the sensor' : ''}
-      {lastFingerprintId ? `Fingerprint registration successful for UID ${lastFingerprintId+1}` : ''}
+      {isRegisterMode ? 'Place fingerprint on the sensor<br>' : ''}
+      {lastFingerprintId ? `Fingerprint registration successful for UID ${lastFingerprintId}` : ''}
     </div>
   );
 };

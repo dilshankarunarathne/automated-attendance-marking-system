@@ -39,7 +39,6 @@ export const FingerprintRegisterPage = () => {
         }
   
         // mock fingerprint registration
-        // do a post request to http://localhost:8800/api/auth/register-fingerprint with json body '{"fingerprint_id": <lastFingerprintId>, "success": true}'
         
         console.log('trying to verify fingerprint id: ', lastFingerprintId);
   
@@ -53,6 +52,8 @@ export const FingerprintRegisterPage = () => {
         } else {
           console.error('lastFingerprintId is not initialized');
         }
+
+        // end of mock fingerprint registration
       } catch (error) {
         console.error(error);
       }
@@ -63,8 +64,12 @@ export const FingerprintRegisterPage = () => {
 
   return (
     <div>
-      {isRegisterMode ? 'Place fingerprint on the sensor<br>' : ''}
-      {lastFingerprintId ? `Fingerprint registration successful for UID ${lastFingerprintId}` : ''}
+      <div>
+      {isRegisterMode ? 'Place fingerprint on the sensor ' : ''}
+      </div>
+      <div>
+        {lastFingerprintId ? `Fingerprint registration successful for UID ${lastFingerprintId}` : ''}
+      </div>
     </div>
   );
 };

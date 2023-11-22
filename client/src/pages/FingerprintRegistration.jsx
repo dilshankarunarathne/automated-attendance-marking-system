@@ -41,9 +41,27 @@ export const FingerprintRegisterPage = () => {
           const attendanceResponse = await axios.post('http://localhost:8800/fingerprint/mark', {
             fingerprint_id: lastFingerprintId,
           });
+          console.log('attendance response: ', attendanceResponse.data);
 
-          console.log(attendanceResponse.data);
+          /*
+          // get student email from fingerprint id
+          // GET http://localhost:8800/api/auth/email
+          // with JSON '{"fingerprint_id": "<last_fingerprint_id>"}'
+          const emailResponse = await axios.get('http://localhost:8800/api/auth/email', {
+              fingerprint_id: lastFingerprintId,
+          });
+          console.log('email response: ', emailResponse.data);
+          
+          // send attended email to student
+          // POST http://localhost:8800/attendance/mail
+          // with JSON '{"email": "<student_email>"}'
+          const mailResponse = await axios.post('http://localhost:8800/attendance/mail', {
+            email: emailResponse.data,
+          });
 
+          console.log('mail response: ', mailResponse.data);
+          */
+         
           // END mock one attendance record
 
           navigate('/');

@@ -18,6 +18,22 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// get email by fingerprint id
+router.get("/email", async (req, res) => {
+  try {
+    const { fingerprint_id } = req.body;
+    const user = await User.findOne({ fingerprint_id: fingerprint_id });
+    if (!user) {
+      console.log('User not found');
+      return res.status(404).send("user not found");
+    }
+    res.status(200).json(user.email);
+  } catch (error) {
+    console.log('Error:', error);
+    res.status(500).json(error);
+  }
+});
+
 // get last fingerprint id 
 function getLastFingerprintId() {
   return new Promise((resolve, reject) => {

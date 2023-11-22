@@ -100,8 +100,10 @@ router.post('/mark', async (req, res) => {
 
     // Send email notification
     const email = user.email;
-    console.log(`Sending attended notification to: ${email}`);
-    // sendEmail(email, 'You have attended', '<b>You have attended to class...</b>');
+    
+    const messageStr = '<b>You have attended to class on ' + new Date().toLocaleDateString() + '</b>';
+    sendEmail(email, 'Notification: Attendance', messageStr);
+    console.log(`Sending attended notification to: ${email} with message: ${messageStr}`);
 });
 
 module.exports = router;

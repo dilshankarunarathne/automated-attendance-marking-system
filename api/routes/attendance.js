@@ -46,11 +46,21 @@ router.get('/all', async (req, res) => {
   }
 });
 
-// router.post('/testMark', async (req, res) => {
-//   const { email } = req.params;
-//   console.log(`Sending attended notification to: ${email}`);
-//   sendEmail(email, 'You have attended', '<b>You have attended to class...</b>');
-// });
+// for mock attendance - email
+router.post('/mail', async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const messageStr = '<b>You have attended to class on ' + new Date().toLocaleDateString() + '</b>';
+    sendEmail(email, 'You have attended', messageStr);
+    console.log(`Sending attended notification to: ${email} with message: ${messageStr}`);
+    
+    res.json({ message: 'Email sent' });
+  } catch (err) {
+    console.error(`Error occurred: ${err.message}`);
+    res.status(500).json({ message: err.message });
+  }
+});
 
 
 /*

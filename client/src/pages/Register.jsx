@@ -88,14 +88,14 @@ export const Register = () => {
           <button onClick={() => handleRoleSelection(true)}>Teacher</button>
         </div>
       ) : (
+        <Grid>
+          <button onClick={() => setRoleSelected(false)}>Go Back</button>
+          <Paper style={paperStyle}>
+            <Grid align='center'>
+              <Avatar style={avatarstyle}><AddCircleIcon/></Avatar>
+              <h2>Sign Up</h2>
+            </Grid>
             <Grid>
-              <button onClick={() => navigate(-1)}>Go Back</button>
-                <Paper  style={paperStyle}>
-                    <Grid align='center'>
-                        <Avatar style={avatarstyle}><AddCircleIcon></AddCircleIcon></Avatar>
-                        <h2>Sign Up</h2>
-                    </Grid>
-                    <Grid>
                     <form onSubmit={submitHandler}>
                         <div class="mb-3">
                             <input type="text" class="form-control" id="firstname" placeholder="Enter First Name" 

@@ -84,6 +84,7 @@ export const Register = () => {
     <div>
       {!roleSelected ? (
         <div className="studortech">
+          <button onClick={() => navigate(-1)}>Go Back</button>
           <button onClick={() => handleRoleSelection(false)}>Student</button>
           <button onClick={() => handleRoleSelection(true)}>Teacher</button>
         </div>
